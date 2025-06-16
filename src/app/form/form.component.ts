@@ -12,12 +12,11 @@ import { NgIf } from '@angular/common';
 })
 export class FormComponent {
 
-  onSubmit(form: NgForm) {
-
+  SubmitForm(form: NgForm) {
     if (form.valid) {
       console.log('Form Data:', form.value);
       alert('Form submitted successfully!');
-      // form.resetForm(); // optional reset after submit
+      form.resetForm(); // optional reset after submit
     } else {
       alert('Please fill all required fields!');
     }

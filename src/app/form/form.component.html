@@ -3,7 +3,7 @@
 
   <form
     #regForm="ngForm"
-    (ngSubmit)="onSubmit(regForm)"
+    (ngSubmit)="SubmitForm(regForm)"
     class="border p-4 rounded bg-light shadow"
   >
     <div class="mb-3">
@@ -60,7 +60,9 @@
           type="radio"
           name="gender"
           value="Male"
+          required
           ngModel
+          #gender="ngModel"
           class="form-check-input"
         />
         Male
@@ -70,21 +72,29 @@
           type="radio"
           name="gender"
           value="Female"
+          required
           ngModel
+          #gender="ngModel"
           class="form-check-input"
         />
         Female
+      </div>
+      <div class="text-danger" *ngIf="gender.invalid && gender.touched">
+        Please select a gender
       </div>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Country</label>
-      <select name="country" class="form-select" ngModel required>
+      <select name="country" class="form-select" ngModel required #country="ngModel">
         <option value="">Select Country</option>
         <option value="Pakistan">Pakistan</option>
         <option value="India">India</option>
         <option value="UAE">UAE</option>
       </select>
+      <div class="text-danger" *ngIf="country.invalid && country.touched">
+        Please select a country
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="regForm.invalid">
